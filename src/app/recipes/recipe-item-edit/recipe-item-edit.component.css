@@ -1,0 +1,21 @@
+#recipeId {
+  width: 18%;
+}
+
+.number-input {
+  max-width: 60px;
+  margin-right: 10px;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  outline: none;
+  border-color: red;
+  box-shadow: 0 0 4px #ed3434;
+}
+
+.image-preview {
+  height: auto;
+  max-width: 200px;
+  object-fit: cover;
+}

@@ -1,0 +1,7 @@
+.nav-item, .dropdown-item {
+  cursor: pointer;
+}
+
+.nav-icons {
+  font-size: 16px;
+}

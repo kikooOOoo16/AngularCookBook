@@ -1,0 +1,21 @@
+@media (max-width: 575px) {
+  #recipe-list-hr {
+    width: 288px;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  #recipe-list-hr {
+    margin-left: 112px;
+    width: 287px;
+  }
+}
+
+@media (min-width: 768px) {
+  #recipe-list-hr {
+    width: 288px;
+    margin-left: 0;
+  }
+}
+

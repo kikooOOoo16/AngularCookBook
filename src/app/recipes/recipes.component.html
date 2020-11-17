@@ -1,0 +1,19 @@
+<div class="loading-spinner d-flex justify-content-center align-items-center" *ngIf="dataBaseCall">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div *ngIf="!dataBaseCall" class="row">
+  <div class="col-md-6 col-lg5 col-xl-4 d-flex">
+    <app-recipe-list></app-recipe-list>
+  </div>
+  <div class="col-md-6 col-lg-5 mt-5 justify-content-center">
+    <router-outlet></router-outlet>
+  </div>
+  <ng-go-top-button
+    [animate]="true"
+    [speed]="50"
+    [acceleration]="2"
+    [scrollDistance]="300"
+    [classNames]="'back-to-top-button'">
+    <fa-icon id="faAngleUp" [icon]="faAngleUp"></fa-icon>
+  </ng-go-top-button>
+</div>

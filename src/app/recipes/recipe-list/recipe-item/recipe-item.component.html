@@ -1,0 +1,10 @@
+<div class="col-12 mb-3">
+  <div class="shadow card bg-light" style="width: 18rem;">
+    <img class="card-img-top img-resize img-responsive" src="{{recipeItem.imagePath}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{recipeItem.name}}</h5>
+      <p class="card-text">{{recipeItem.description}}</p>
+      <a class="btn btn-outline-info" pageScroll href="#recipe-details" [routerLink]="[index]">Open recipe</a>
+    </div>
+  </div>
+</div>

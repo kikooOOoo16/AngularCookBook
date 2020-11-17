@@ -1,0 +1,54 @@
+.back-to-top-button {
+  display: inline-block;
+  background-color: #FF9800;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  border-radius: 30px;
+  border-width: 0;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s,
+  opacity .5s, visibility .5s;
+  opacity: 0;
+  z-index: 1000;
+}
+
+.back-to-top-button:focus {
+  outline: none;
+}
+
+.back-to-top-button::after {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+
+.back-to-top-button:hover {
+  cursor: pointer;
+  background-color: #343A40;
+}
+
+.back-to-top-button:active {
+  background-color: #343A40;
+}
+
+.back-to-top-button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#faAngleUp {
+  color: white;
+  font-size: 1.8em;
+  transition: font-size .3s;
+}
+
+.back-to-top-button:hover > #faAngleUp {
+  top: -10px;
+  font-size: 2.5em;
+}

@@ -1,0 +1,12 @@
+<div class="row mt-3 mb-3">
+  <div class="col-12 d-flex justify-content-sm-center justify-content-lg-start">
+    <a class="btn btn-outline-success" pageScroll href="#recipe-new" routerLink="./new">New Recipe</a>
+  </div>
+</div>
+<hr id="recipe-list-hr">
+<div class="row mb-3 justify-content-sm-center justify-content-md-start">
+  <app-recipe-item *ngFor="let recipeItem of recipes; let i = index"
+                   [recipeItem]="recipeItem"
+                   [index]="i">
+  </app-recipe-item>
+</div>

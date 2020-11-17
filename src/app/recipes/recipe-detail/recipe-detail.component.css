@@ -1,0 +1,17 @@
+#recipe-img-detail {
+  max-height: 300px;
+}
+
+#dropdownMenuLink {
+  color: #007bff;
+  transition: color 0.3s;
+
+}
+
+#dropdownMenuLink:hover {
+  color: #ffffff;
+}
+
+a.dropdown-item:hover {
+  cursor: pointer;
+}

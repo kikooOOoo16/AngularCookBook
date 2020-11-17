@@ -1,0 +1,65 @@
+<ng-template appPlaceholder></ng-template>
+<div class="loading-spinner d-flex justify-content-center align-items-center" *ngIf="isLoading">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div *ngIf="!isLoading" class="d-flex flex-column justify-content-center">
+  <div class="login-form align-self-center">
+    <div class="login-header">
+      <div class="login-header-background"></div>
+      <div class="login-header-overlay"></div>
+      <div class="login-header-content">
+        <p class="centered">SIGN IN</p>
+      </div>
+      <div class="login-form-content">
+        <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
+          <div class="form-group form-row">
+            <label class="col-2 col-form-label" for="email">Email</label>
+            <div class="col-1"></div>
+            <div class="col-9">
+              <input [ngClass]="{'invalid-data': signUpForm.get('email').touched && !signUpForm.get('email').valid}"
+                     type="email" id="email" class="form-control mb-2"
+                     placeholder="Enter email {{ signUpForm.get('email').touched && !signUpForm.get('email').valid ? '*' : ''}}"
+                     formControlName="email">
+            </div>
+          </div>
+          <div class="form-group form-row">
+            <label class="col-2 col-form-label" for="password">Password</label>
+            <div class="col-1"></div>
+            <div class="col-9 mb-4">
+              <input
+                [ngClass]="{'invalid-data' : signUpForm.get('password').touched && !signUpForm.get('password').valid}"
+                type="password" id="password" class="form-control"
+                placeholder="Enter password {{ signUpForm.get('password').touched && !signUpForm.get('password').valid ? '*' : ''}}"
+                formControlName="password" (click)="passwordInputTouched()">
+            </div>
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <button class="btn btn-outline-primary form-submit-btn" type="submit"
+                    [disabled]="!signUpForm.valid">{{ isLoginMode ? 'Sign In' : 'Sign Up'}}</button>
+          </div>
+          <div *ngIf="!signUpForm.valid && signUpForm.touched"
+               class="col-12 justify-content-center mt-4 form-invalid-message">
+            <p
+              *ngIf="!isLoginMode && !signUpForm.get('password').valid && passwordTouched && signUpForm.get('email').valid; else loginErrorMessage"
+              class="text-center">Password must be 6 characters or more!</p>
+            <ng-template #loginErrorMessage>
+              <p *ngIf="isLoginMode && signUpForm.get('email').valid; else generalErrorMessage" class="text-center">
+                Please enter a valid password!</p>
+              <ng-template #generalErrorMessage>
+                <p class="text-center">Invalid credentials!</p>
+              </ng-template>
+            </ng-template>
+          </div>
+          <div class="col-12 d-flex justify-content-center mt-4 form-switch-text">
+            <p *ngIf="isLoginMode; else signUpMode" class="text-muted text-center">Dont have an account yet? <br><a
+              (click)="onSwitchMode()"> Sign Up </a></p>
+            <ng-template #signUpMode>
+              <p class="text-muted text-center">Already have an account? <br><a (click)="onSwitchMode()"> Sign In </a>
+              </p>
+            </ng-template>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
