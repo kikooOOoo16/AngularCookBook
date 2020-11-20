@@ -5,6 +5,7 @@ import {PlaceholderDirective} from './placeholder/placeholder.directive';
 import {AlertComponent} from './alert/alert.component';
 import {CommonModule} from '@angular/common';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { TrackScrollDirective } from './trackscroll.directive';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     AlertComponent,
     DropdownDirective,
     PlaceholderDirective,
+    TrackScrollDirective,
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     LoadingSpinnerComponent,
     AlertComponent,
     PlaceholderDirective,
-    DropdownDirective
+    DropdownDirective,
+    TrackScrollDirective
   ],
   entryComponents: [
     AlertComponent
