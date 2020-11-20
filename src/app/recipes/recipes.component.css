@@ -1,6 +1,6 @@
 .back-to-top-button {
   display: inline-block;
-  background-color: #FF9800;
+  background-color: #C8B49A;
   width: 60px;
   height: 60px;
   text-align: center;
@@ -30,11 +30,11 @@
 
 .back-to-top-button:hover {
   cursor: pointer;
-  background-color: #343A40;
+  background-color: #AF916C;
 }
 
 .back-to-top-button:active {
-  background-color: #343A40;
+  background-color: #AF916C;
 }
 
 .back-to-top-button.show {

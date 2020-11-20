@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Subscription} from 'rxjs';
 import * as fromApp from '../store/app.reducer';
 import {Store} from '@ngrx/store';
@@ -21,6 +21,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private isDropdownOpen = false;
   isAuthenticated = false;
   @ViewChild('navbarDropdown', {static: true}) navbarDropdown: ElementRef;
+  @ViewChild('navbar', {static: true}) navbar: ElementRef;
+  @HostListener('window:scroll', ['$event'])
+  toggleClass(event) {
+    if (window.pageYOffset > 0) {
+      this.renderer.addClass(this.navbar.nativeElement, 'affix')
+    } else {
+      this.renderer.removeClass(this.navbar.nativeElement, 'affix')
+    }
+    // console.log('Scroll Event', window.pageYOffset );
+  }
+
 
   constructor(
     private renderer: Renderer2,
@@ -61,3 +72,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 }
+
+// <!-- Function used to shrink nav bar removing paddings and adding black background -->
+// <script>
+//   $(window).scroll(function() {
+//     if ($(document).scrollTop() > 50) {
+//       $('.nav').addClass('affix');
+//       console.log("OK");
+//     } else {
+//       $('.nav').removeClass('affix');
+//     }
+//   });
+// </script>

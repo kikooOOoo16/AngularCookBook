@@ -36,7 +36,7 @@ const _authReducer = createReducer(
         action.expirationDate
       ),
       authError: null,
-      loading: false
+      // loading: false
     })
   ),
   on(
@@ -52,7 +52,8 @@ const _authReducer = createReducer(
     AuthActions.logout,
     (state) => ({
       ...state,
-      user: null
+      user: null,
+      loading: false
     })
   ),
   on(
