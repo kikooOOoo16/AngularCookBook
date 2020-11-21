@@ -56,8 +56,8 @@
         Recipe book
       </a>
     </div>
-    <div id="mainListDiv" class="main_list">
-      <ul class="navlinks">
+    <div id="mainListDiv" #navbarMainListDiv class="main_list">
+      <ul class="navLinks">
         <li class="nav-item " routerLinkActive="active">
           <a class="nav-link" routerLink="/shopping-list">Shopping List
             <fa-icon class="nav-icons" [icon]="faShoppingBasket"></fa-icon>
@@ -78,7 +78,7 @@
         </li>
       </ul>
     </div>
-    <span class="navTrigger" id="navbarDropdownMenuLink" data-toggle="dropdown">
+    <span  class="navTrigger" #navbarDropdownMenuLink (click)="toggleDropdown()" >
         <i></i>
         <i></i>
         <i></i>
