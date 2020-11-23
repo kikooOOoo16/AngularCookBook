@@ -39,7 +39,11 @@
 }
 
 .nav div.logo a:hover {
-  color: #338D48;
+  color: #41E194;
+}
+
+.nav.affix div.logo a:hover {
+  color: #75af66;
 }
 
 .nav div.main_list {
@@ -70,7 +74,11 @@
 }
 
 .nav div.main_list ul li a:hover {
-  color: #338D48;
+  color: #41E194;
+}
+
+.nav.affix div.main_list ul li a:hover {
+  color: #75af66;
 }
 
 /* Home section */
@@ -96,7 +104,9 @@
   background-image: url('../images/hero-image.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: 1
+  z-index: 1;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .hero-overlay {
@@ -106,13 +116,7 @@
 
 /* Media query section */
 
-@media screen and (min-width: 799px) and (max-width: 1024px) {
-  .container {
-    margin: 0;
-  }
-}
-
-@media screen and (max-width:799px) {
+@media screen and (max-width:986px) {
   .navTrigger {
     display: block;
     padding-top: 20px;
@@ -130,9 +134,8 @@
   .nav div.show_list {
     height: auto;
     display: block;
-    -webkit-transition: all 0.4s ease;
-    transition: all 0.4s ease;
   }
+
 .nav div.show_list.navLinks {
   flex-direction: column;
   width: 100%;
@@ -150,18 +153,13 @@
     bottom: 0;
     background-color: #C8B49A;
     z-index: 11;
-    /*same background color of navbar*/
     background-position: center top;
   }
-  .nav div.main_list ul li {
-    width: 100%;
-    text-align: right;
-  }
   .nav div.main_list ul li a {
-    text-align: center;
+    text-align: left;
     width: 100%;
-    font-size: 3rem;
-    padding: 20px;
+    font-size: 2.3rem;
+    padding: 20px 20px 20px 10%;
   }
   .nav div.media_button {
     display: block;

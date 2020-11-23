@@ -17,12 +17,14 @@ import {RecipesEffects} from './recipes/store/recipes.effects';
 import {ShoppingListEffects} from './shopping-list/store/shopping-list.effects';
 import * as fromApp from './store/app.reducer';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
