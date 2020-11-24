@@ -4,7 +4,6 @@ import * as fromApp from '../store/app.reducer';
 import {Store} from '@ngrx/store';
 import {map} from 'rxjs/operators';
 import * as AuthActions from '../auth/store/auth.actions';
-// import * as RecipeActions from '../recipes/store/recipes.actions';
 import {faBook, faShoppingBasket, faSignInAlt, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -51,15 +50,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
   }
-
-  // onSaveData() {
-  //   this.store.dispatch(RecipeActions.saveRecipesToDb())
-  // }
-  //
-  // onFetchData() {
-  //   this.store.dispatch(RecipeActions.startDbCall());
-  //   this.store.dispatch(RecipeActions.getRecipesFromDb());
-  // }
 
   onLogout() {
     this.store.dispatch(AuthActions.logout());
