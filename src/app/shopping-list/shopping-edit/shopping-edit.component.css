@@ -3,3 +3,16 @@ input.ng-invalid.ng-touched {
   border-color: #ff6a5d;
   box-shadow: 0 0 6px #ff6a5d;
 }
+
+h3 {
+  border-bottom: 1px solid;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #F8727D;
+  font-family: 'Josefin Sans',sans-serif;
+  font-weight: 400;
+  font-size: 2.0rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  vertical-align: top;
+}

@@ -2,6 +2,16 @@ main {
   position: relative;
 }
 
-.container {
+.content {
+  margin-top: 2vh;
   min-height: 80vh;
+  margin-left: 20ch;
+  margin-right: 20ch;
+}
+
+@media only screen and (max-width: 750px) {
+  .content {
+    margin-left: 3ch;
+    margin-right: 3ch;
+  }
 }

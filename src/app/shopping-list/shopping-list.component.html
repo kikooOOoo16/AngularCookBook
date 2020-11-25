@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-10">
+  <div class="col-sm-12 col-lg-10 mt-5 shoppingList-content">
     <app-shopping-edit></app-shopping-edit>
     <hr>
     <ul class="list-group">
@@ -8,6 +8,11 @@
         {{ingredient.name}} - <span class="badge badge-primary badge-pill">{{ingredient.amount}}</span>
       </a>
     </ul>
+    <div class="button danger">
+      <div class="circle"></div>
+      <button type="button" (click)="onBackToRecipes()">
+        Back to recipes
+      </button>
+    </div>
   </div>
 </div>
-<button class="btn btn-outline-danger mt-4" (click)="onBackToRecipes()">Back to recipes</button>

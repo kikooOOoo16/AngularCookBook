@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {faEnvelope, faHome, faPhone} from "@fortawesome/free-solid-svg-icons";
+import {faEnvelope, faPhone} from "@fortawesome/free-solid-svg-icons";
 import * as fromApp from '../store/app.reducer';
 import {Store} from "@ngrx/store";
 import {map} from "rxjs/operators";
@@ -12,7 +12,6 @@ import * as AuthActions from "../auth/store/auth.actions";
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  faHome = faHome;
   faEnvelope = faEnvelope;
   faPhone = faPhone;
   userSub: Subscription;
