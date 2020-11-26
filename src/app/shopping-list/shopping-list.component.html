@@ -1,14 +1,18 @@
-<div class="row">
+<div class="row mx-md-0 mx-lg-2 mx-xl-5">
   <div class="col-sm-12 col-lg-10 mt-5 shoppingList-content">
     <app-shopping-edit></app-shopping-edit>
-    <hr>
-    <ul class="list-group">
-      <a class="list-group-item list-group-item-action" style="cursor: pointer"
+    <hr class="my-4">
+    <div class="d-flex flex-column align-items-center ">
+      <a #ingredientList class="ingredient-list"
          *ngFor="let ingredient of (ingredients | async).ingredients; let i = index" (click)="onEditItem(i)">
-        {{ingredient.name}} - <span class="badge badge-primary badge-pill">{{ingredient.amount}}</span>
+        {{ingredient.name}}
+        <div class="d-flex flex-row">
+          <span class="ingredient-amount">{{ingredient.amount}}</span>
+          <fa-icon (click)="checkIngredient(i)" [icon]="faCheck" class="check-icon" size="lg"></fa-icon>
+        </div>
       </a>
-    </ul>
-    <div class="button danger">
+    </div>
+    <div *ngIf="isAuthenticated" class="button danger">
       <div class="circle"></div>
       <button type="button" (click)="onBackToRecipes()">
         Back to recipes

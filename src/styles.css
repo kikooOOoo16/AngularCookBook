@@ -8,19 +8,27 @@
   width: 100%;
 }
 
-/*.button:disabled {*/
-/*  color: #a9adad;*/
-/*  border-color: #a9adad;*/
-/*}*/
+/* Disabled button styles */
+.button.disabled {
+  border-color: #a9adad !important;
+}
 
-/*.button:disabled:hover {*/
-/*  color: #a9adad;*/
-/*  border-color: #a9adad;*/
-/*}*/
+.button.disabled button {
+  color: #a9adad !important;
+}
 
+.button.disabled:hover button {
+  color: #a9adad !important;
+}
+
+.button.disabled:hover .circle {
+  opacity: 0 !important;
+}
 
 /* General Button Styles */
 button {
+  width: inherit;
+  height: inherit;
   border: none;
   overflow: hidden;
   outline: none;

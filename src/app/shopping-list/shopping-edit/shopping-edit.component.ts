@@ -13,15 +13,16 @@ import * as fromApp from '../../store/app.reducer';
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('shoppingListForm', {static: true}) shoppingListForm: NgForm;
-  subscription: Subscription;
+  shoppingListSubscription: Subscription;
   editMode = false;
   editedItem: Ingredient;
+  disabledClass = 'disabled';
 
   constructor(private store: Store<fromApp.AppState>) {
   }
 
   ngOnInit() {
-    this.subscription = this.store.select('shoppingList').subscribe(stateDate => {
+    this.shoppingListSubscription = this.store.select('shoppingList').subscribe(stateDate => {
       if (stateDate.editedIngredientIndex > -1) {
         this.editMode = true;
         this.editedItem = stateDate.editedIngredient;
@@ -36,7 +37,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.shoppingListSubscription.unsubscribe();
     this.store.dispatch(ShoppingListActions.stopEdit());
   }
 

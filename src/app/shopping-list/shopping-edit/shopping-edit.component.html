@@ -1,39 +1,41 @@
-<div class="row mt-2">
+<div class="row">
   <div class="text-center col-12 my-3 shoppingList-title">
     <h3 class="justify-content-center">Shopping List</h3>
   </div>
   <div class="col-12">
     <form (ngSubmit)="addItemToShoppingList(shoppingListForm)" #shoppingListForm="ngForm">
       <div class="row">
-        <div class="col-7 col-md-5 form-group">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            class="form-control"
-            name="nameInput"
-            required
-            ngModel #ingredientNameInput="ngModel">
-          <p class="text-muted" *ngIf="!ingredientNameInput.valid && ingredientNameInput.touched">Enter a valid
-            ingredient name!</p>
+        <div class="col-12 col-lg-5 col-xl-3 mr-l-0 mr-xl-3 form-group">
+          <div class="input-field">
+            <input
+              type="text"
+              id="name"
+              name="nameInput"
+              required
+              ngModel #ingredientNameInput="ngModel">
+            <label for="name">Name</label>
+            <p class="text-suggestion" *ngIf="!ingredientNameInput.valid && ingredientNameInput.touched">Enter a valid
+              ingredient name!</p>
+          </div>
         </div>
-        <div class="div col-4 col-md-3 col-lg-2 form-group">
-          <label for="amount">Amount</label>
-          <input
-            type="number"
-            id="amount"
-            class="form-control"
-            name="amountInput"
-            required
-            pattern="^[1-9]+[0-9]*$"
-            ngModel #ingredientAmountInput="ngModel">
-          <p class="text-muted" *ngIf="!ingredientAmountInput.valid && ingredientAmountInput.touched">Enter an
-            amount!</p>
+        <div class="div col-10 col-lg-4 col-xl-5 mt-sm-3 mt-lg-0 form-group">
+          <div class="input-field">
+            <input
+              type="number"
+              id="amount"
+              name="amountInput"
+              required
+              pattern="^[1-9]+[0-9]*$"
+              ngModel #ingredientAmountInput="ngModel">
+            <label for="amount">Amount</label>
+            <p class="text-suggestion" *ngIf="!ingredientAmountInput.valid && ingredientAmountInput.touched">Enter an
+              amount!</p>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <div class="button success">
+          <div class="button success {{ (!shoppingListForm.valid && !shoppingListForm.untouched) ? disabledClass : ''}}">
             <div class="circle"></div>
             <button [disabled]="!shoppingListForm.valid" type="submit">
               {{ editMode ? 'Update' : 'Add Item'}}
@@ -45,9 +47,9 @@
               Delete
             </button>
           </div>
-          <div class="button info">
+          <div class="button info {{ (!shoppingListForm.touched) ? disabledClass : ''}}">
             <div class="circle"></div>
-            <button type="button" (click)="resetForm()">
+            <button [disabled]="!shoppingListForm.touched" type="button" (click)="resetForm()">
               Clear
             </button>
           </div>
