@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit, QueryList, Renderer2, ViewChildren} from '@angular/core';
+import {Component, HostListener, OnInit, Renderer2} from '@angular/core';
 import {Ingredient} from '../recipes/models/ingredient.model';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -6,7 +6,7 @@ import {Store} from '@ngrx/store';
 import * as ShoppingListActions from './store/shopping-list.actions';
 import * as fromApp from '../store/app.reducer';
 import {map} from "rxjs/operators";
-import {faCheck} from "@fortawesome/free-solid-svg-icons";
+import {faCheckSquare, faSquare} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-shopping-list',
@@ -15,7 +15,6 @@ import {faCheck} from "@fortawesome/free-solid-svg-icons";
 })
 
 export class ShoppingListComponent implements OnInit {
-  @ViewChildren('ingredientList') ingredientsList: QueryList<any>;
   ingredients: Observable<{ ingredients: Ingredient[] }>;
   private userSub: Subscription;
   isAuthenticated = false;
@@ -24,7 +23,8 @@ export class ShoppingListComponent implements OnInit {
       this.store.dispatch(ShoppingListActions.saveIngredients());
     }
   }
-  faCheck = faCheck;
+  faCheckSquare = faCheckSquare;
+  faSquare = faSquare;
 
 
   constructor(private router: Router,
@@ -36,8 +36,8 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.data.subscribe((data) => {
       if (data.shoppingListIngredients !== undefined && data.shoppingListIngredients.length > 0) {
-        this.store.dispatch(ShoppingListActions.addIngredients({ingredients: data.shoppingListIngredients}))
-        localStorage.removeItem('shoppingList')
+        this.store.dispatch(ShoppingListActions.addIngredients({ingredients: data.shoppingListIngredients}));
+        localStorage.removeItem('shoppingList');
       }
     })
     this.ingredients = this.store.select('shoppingList'); // this is an observable
@@ -55,10 +55,12 @@ export class ShoppingListComponent implements OnInit {
     this.router.navigate(['/recipes']);
   }
 
-  checkIngredient(i) {
-    this.ingredientsList.filter((element, index) => index === i)
-      .map((elementRef) => {
-        this.renderer.addClass(elementRef.nativeElement, 'checked');
-    })
+  checkIngredient($event, i, ingredientReference: HTMLAnchorElement) {
+    $event.stopPropagation();
+    if (ingredientReference.classList.contains('checked')) {
+      ingredientReference.classList.remove('checked')
+    } else {
+      ingredientReference.classList.add('checked')
+    }
   }
 }

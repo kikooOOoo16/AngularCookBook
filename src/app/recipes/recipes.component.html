@@ -2,10 +2,13 @@
   <app-loading-spinner></app-loading-spinner>
 </div>
 <div *ngIf="!dataBaseCall" class="row">
-  <div class="col-md-6 col-lg5 col-xl-4 d-flex">
+  <div class="col-12 text-center my-5">
+    <h3>My Recipes</h3>
+  </div>
+  <div class="col-4 col-md-6 col-lg-5 col-xl-8 d-flex">
     <app-recipe-list></app-recipe-list>
   </div>
-  <div class="col-md-6 col-lg-5 mt-5 justify-content-center">
+  <div class="col-md-4 col-lg-5 col-xl-4 mt-5 justify-content-center">
     <router-outlet></router-outlet>
   </div>
   <ng-go-top-button

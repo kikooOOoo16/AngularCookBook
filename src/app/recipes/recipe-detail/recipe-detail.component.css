@@ -2,16 +2,15 @@
   max-height: 300px;
 }
 
-#dropdownMenuLink {
-  color: #007bff;
-  transition: color 0.3s;
-
-}
-
-#dropdownMenuLink:hover {
-  color: #ffffff;
-}
-
 a.dropdown-item:hover {
   cursor: pointer;
+}
+
+.appDropdown {
+  height: 40px;
+  width: 150px;
+}
+
+.dropdown-menu {
+  left: 25px;
 }

@@ -1,16 +1,30 @@
 <form id="recipe-new" class="mb-4" [formGroup]="recipeForm" (ngSubmit)="submitForm()">
-  <div class="form-group">
-    <label for="recipeName">Recipe Name</label>
-    <input type="text" class="form-control" id="recipeName" formControlName="name">
-    <label for="recipeImg">Recipe Image Link</label>
-    <input type="text" class="form-control" id="recipeImg" formControlName="imagePath" #imagePath>
+  <div class="row">
+    <div class="form-group">
+      <div class="input-field">
+        <input
+          type="text"
+          id="recipeName"
+          required
+          formControlName="name">
+        <label for="recipeName">Recipe Name</label>
+      </div>
+      <div class="input-field">
+        <input
+          type="text"
+          id="recipeImg"
+          required
+          formControlName="imagePath"
+          #imagePath>
+        <label for="recipeImg">Recipe Image Link</label>
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <img [src]="imagePath.value" class="image-preview img-fluid rounded mx-auto d-block" alt="">
   </div>
   <div class="form-group">
-    <label for="recipeDesc">Recipe Description</label>
-    <textarea class="form-control" id="recipeDesc" rows="10" formControlName="description"></textarea>
+    <textarea class="form-control" id="recipeDesc" rows="10" formControlName="description"  placeholder="Recipe description..."></textarea>
   </div>
   <br>
   <h4>Recipe Ingredients</h4>
@@ -18,13 +32,18 @@
     <div class="col-12" formArrayName="ingredients">
       <div class="row" *ngFor="let ingredientControl of controls; let i = index" [formGroupName]="i">
         <div class="col-8 mb-2">
-          <input type="text" class="form-control" formControlName="name">
+          <div class="input-field">
+            <input type="text" formControlName="name">
+          </div>
         </div>
         <div class="col-3">
-          <input type="number" class="form-control" formControlName="amount">
+          <div class="input-field">
+            <input class="text-center" type="number" formControlName="amount">
+          </div>
         </div>
         <div class="col-1">
-          <button type="button" class="btn-danger btn" (click)="onDeleteIngredient(i)">X</button>
+            <button class="delete-ingredient-btn mt-4" type="button" (click)="onDeleteIngredient(i)"><fa-icon [icon]="faTimes"></fa-icon>
+            </button>
         </div>
       </div>
       <hr>
@@ -35,8 +54,16 @@
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-outline-info mr-2" *ngIf="editMode" [disabled]="!recipeForm.valid">Edit</button>
-  <button type="submit" class="btn btn-outline-success mr-2" *ngIf="!editMode" [disabled]="!recipeForm.valid">Create
-  </button>
-  <button type="button" class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
+  <div *ngIf="editMode" class="button info {{ (!recipeForm.valid) ? disabledClass : ''}}">
+    <div class="circle"></div>
+    <button type="submit" class="mr-2"  [disabled]="!recipeForm.valid">Edit</button>
+  </div>
+  <div *ngIf="!editMode" class="button success {{ (!recipeForm.valid) ? disabledClass : ''}}">
+    <div class="circle"></div>
+    <button type="submit" class="mr-2"  [disabled]="!recipeForm.valid">Create</button>
+  </div>
+  <div class="button danger">
+    <div class="circle"></div>
+    <button type="button" (click)="onCancel()">Cancel</button>
+  </div>
 </form>

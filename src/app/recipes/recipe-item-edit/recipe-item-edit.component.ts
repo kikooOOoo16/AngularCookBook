@@ -7,6 +7,7 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
 import * as RecipesActions from '../store/recipes.actions';
 import {Subscription} from 'rxjs';
+import {faTimes} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-recipe-item-edit',
@@ -19,6 +20,8 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
   recipe: Recipe;
   recipeForm: FormGroup;
   private storeSub: Subscription;
+  faTimes = faTimes;
+  disabledClass = 'disabled'
 
   constructor(
     private route: ActivatedRoute,
@@ -45,7 +48,6 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
     let recipeImagePath = '';
     let recipeDescription = '';
     const recipeIngredients = new FormArray([]);
-
     if (this.editMode) {
       this.storeSub = this.store.select('recipes')
         .pipe(

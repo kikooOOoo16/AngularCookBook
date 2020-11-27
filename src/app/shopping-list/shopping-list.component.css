@@ -2,52 +2,20 @@
   padding: 3vh 3vh 2vh;
 }
 
-hr {
-  border: 0;
+.checked:after{
+  position: absolute;
+  left: 8px;
+  top: 50%;
   height: 1px;
-  background-image: linear-gradient(to right, #f0f0f0, #F8727D, #F8727D, #f0f0f0);
-}
-
-div.flex-column {
-  padding-inline-start: 0;
-}
-
-div.flex-column a.ingredient-list {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #2b2b2b;
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 45px;
-  border-radius: 3px;
-  padding-left: 20px;
-  height: 48px;
-  width: 85%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 0 9px 0 rgba(0,0,0,0.2);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-div.flex-column a.ingredient-list.checked {
-  text-decoration: line-through;
+  background: #dc3643;
+  content: "";
+  width: 87%;
+  display: block;
 }
 
 div.flex-column a.ingredient-list:hover {
   transform: scale(1.05);
   background-color: #f5f5f5;
-
-}
-
-.ingredient-amount {
-  width: 50px;
-  background: #F8727D;
-  color: #ffffff;
-  font-size: 1.6rem;
-  font-weight: 700;
 }
 
 .check-icon {

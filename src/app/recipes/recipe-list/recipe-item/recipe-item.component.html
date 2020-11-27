@@ -4,7 +4,10 @@
     <div class="card-body">
       <h5 class="card-title">{{recipeItem.name}}</h5>
       <p class="card-text">{{recipeItem.description}}</p>
-      <a class="btn btn-outline-info" pageScroll href="#recipe-details" [routerLink]="[index]">Open recipe</a>
+      <div class="button info">
+        <div class="circle"></div>
+        <button type="button" pageScroll href="#recipe-details" [routerLink]="[index]">Open recipe</button>
+      </div>
     </div>
   </div>
 </div>

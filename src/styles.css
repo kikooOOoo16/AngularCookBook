@@ -8,6 +8,98 @@
   width: 100%;
 }
 
+/* Page Titles */
+h3 {
+  border-bottom: 1px solid;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #F8727D;
+  font-family: 'Josefin Sans',sans-serif;
+  font-weight: 400;
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  vertical-align: top;
+}
+
+h4 {
+  margin: 0.4em 0;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #F8727D;
+  text-align: center;
+  overflow: hidden;
+}
+
+span {
+  display: inline-block;
+  position: relative;
+}
+
+span.no-selection:before {
+  content: "";
+  right: 100%;
+  border-bottom: 2px solid #F8727D;
+  width: 3em;
+  margin: 0 1.5em;
+  position: absolute;
+  bottom: .5em;
+}
+
+span.no-selection:after {
+  content: "";
+  left: 100%;
+
+  border-bottom: 2px solid #F8727D;
+  width: 3em;
+  margin: 0 1.5em;
+  position: absolute;
+  bottom: .5em;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, #f0f0f0, #F8727D, #F8727D, #f0f0f0);
+}
+
+/* Ingredients list styles */
+
+div.flex-column {
+  padding-inline-start: 0;
+  width: 100%;
+}
+
+div.flex-column a.ingredient-list {
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #2b2b2b;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 3px;
+  padding-left: 20px;
+  height: 48px;
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 9px 0 rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ingredient-amount {
+  width: 50px;
+  background: #F8727D;
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
 /* Disabled button styles */
 .button.disabled {
   border-color: #a9adad !important;
@@ -119,7 +211,7 @@ button:focus {
 /* Info Button */
 .button.info {
   border: 2px solid #3d8fc7;
-  width: 100px;
+  width: 110px;
 }
 
 .button.info button {

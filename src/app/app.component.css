@@ -5,8 +5,8 @@ main {
 .content {
   margin-top: 2vh;
   min-height: 80vh;
-  margin-left: 20ch;
-  margin-right: 20ch;
+  margin-left: 15ch;
+  margin-right: 15ch;
 }
 
 @media only screen and (max-width: 750px) {
