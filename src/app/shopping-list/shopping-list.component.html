@@ -8,8 +8,8 @@
         {{ingredient.name}}
         <div class="d-flex flex-row">
           <span class="ingredient-amount">{{ingredient.amount}}</span>
-          <fa-icon *ngIf="!ingredientList.classList.contains('checked')" (click)="checkIngredient($event, i, ingredientList)" [icon]="faSquare" class="check-icon" size="lg"></fa-icon>
-          <fa-icon *ngIf="ingredientList.classList.contains('checked')" (click)="checkIngredient($event, i, ingredientList)" [icon]="faCheckSquare" class="check-icon" size="lg"></fa-icon>
+          <fa-icon *ngIf="!ingredientList.classList.contains('checked')" (click)="onCheckIngredient($event, i, ingredientList)" [icon]="faSquare" class="check-icon" size="lg"></fa-icon>
+          <fa-icon *ngIf="ingredientList.classList.contains('checked')" (click)="onCheckIngredient($event, i, ingredientList)" [icon]="faCheckSquare" class="check-icon" size="lg"></fa-icon>
         </div>
       </a>
     </div>

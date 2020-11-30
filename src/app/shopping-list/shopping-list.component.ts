@@ -1,4 +1,13 @@
-import {Component, HostListener, OnInit, Renderer2} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewChildren
+} from '@angular/core';
 import {Ingredient} from '../recipes/models/ingredient.model';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -14,9 +23,11 @@ import {faCheckSquare, faSquare} from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./shopping-list.component.css'],
 })
 
-export class ShoppingListComponent implements OnInit {
-  ingredients: Observable<{ ingredients: Ingredient[] }>;
+export class ShoppingListComponent implements OnInit, OnDestroy, AfterViewInit {
   private userSub: Subscription;
+  @ViewChildren('ingredientList') private ingredientsReferenceList: QueryList<any>
+  ingredients: Observable<{ ingredients: Ingredient[] }>;
+  private checkedIngredientsIndex: Array<number> = [];
   isAuthenticated = false;
   @HostListener('window:beforeunload', ['$event']) pageLeave ($event: any) {
     if (this.ingredients) {
@@ -47,6 +58,32 @@ export class ShoppingListComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    console.log(localStorage.getItem('checkedIngredientsIndex') + ' ' + localStorage.getItem('checkedIngredientsIndex') !== undefined)
+    if (localStorage.getItem('checkedIngredientsIndex')) {
+      this.checkedIngredientsIndex = JSON.parse(localStorage.getItem('checkedIngredientsIndex'));
+      this.checkedIngredientsIndex.forEach(checkedIngredientIndex => {
+        this.ingredientsReferenceList.forEach((ingredientReference, index) => {
+          if (checkedIngredientIndex === index) {
+            this.renderer.addClass(ingredientReference.nativeElement, 'checked');
+          }
+        })
+      })
+    }
+    localStorage.removeItem('checkedIngredientsIndex');
+  }
+
+  ngOnDestroy(): void {
+    if (this.ingredientsReferenceList.length > 0) {
+      this.ingredientsReferenceList.forEach((ingredientReference, index) => {
+        if (ingredientReference.nativeElement.classList.contains('checked')) {
+          this.checkedIngredientsIndex.push(index);
+        }
+      })
+      localStorage.setItem('checkedIngredientsIndex', JSON.stringify(this.checkedIngredientsIndex));
+    }
+  }
+
   onEditItem(i: number) {
     this.store.dispatch(ShoppingListActions.startEdit({index: i}))
   }
@@ -55,7 +92,7 @@ export class ShoppingListComponent implements OnInit {
     this.router.navigate(['/recipes']);
   }
 
-  checkIngredient($event, i, ingredientReference: HTMLAnchorElement) {
+  onCheckIngredient($event, i, ingredientReference: HTMLAnchorElement) {
     $event.stopPropagation();
     if (ingredientReference.classList.contains('checked')) {
       ingredientReference.classList.remove('checked')
