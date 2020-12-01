@@ -31,6 +31,19 @@
   transform: scale(1.2);
 }
 
+@media(min-width: 992px) and (max-width: 1200px) {
+  .delete-ingredient-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+  }
+
+  .ingredients-list {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 /* Input fields */
 
 .input-field {

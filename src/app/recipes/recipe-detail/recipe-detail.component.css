@@ -13,4 +13,20 @@ a.dropdown-item:hover {
 
 .dropdown-menu {
   left: 25px;
+  border-radius: 0;
+  border: 2px solid #57B846;
+}
+
+.dropdown-menu a.dropdown-item {
+  cursor: pointer;
+  color: #57B846;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  font-size: 1.0rem;
+}
+
+.dropdown-menu a.dropdown-item:hover {
+  color: #ffffff;
+  background-color: #57B846;
+;
 }

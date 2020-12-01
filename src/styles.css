@@ -100,6 +100,13 @@ div.flex-column a.ingredient-list {
   font-weight: 700;
 }
 
+@media(max-width: 400px) {
+  .ingredient-amount {
+    font-size: 1.4rem;
+    width: 40px;
+  }
+}
+
 /* Disabled button styles */
 .button.disabled {
   border-color: #a9adad !important;

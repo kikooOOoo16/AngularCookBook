@@ -13,8 +13,8 @@ export function routerAnimation() {
     transition('-1 => *', [
       query(':enter', [
         style({
-          position: 'fixed',
-          width: '58%',
+          position: 'absolute',
+          width: '100%',
           transform: 'translateX(-100%)',
         }),
         animate(
@@ -33,8 +33,8 @@ export function routerAnimation() {
       query(
         ':enter',
         style({
-          position: 'fixed',
-          width: '58%',
+          position: 'absolute',
+          width: '100%',
           opacity: 0,
           transform: 'translateX(-100%)',
         }),
@@ -47,8 +47,8 @@ export function routerAnimation() {
           animate(
             '600ms ease',
             style({
-              position: 'fixed',
-              width: '58%',
+              position: 'absolute',
+              width: '100%',
               opacity: 0,
               transform: 'translateX(100%)',
             }),
@@ -74,8 +74,8 @@ export function routerAnimation() {
       query(
         ':enter',
         style({
-          position: 'fixed',
-          width: '58%',
+          position: 'absolute',
+          width: '100%',
           opacity: 0,
           transform: 'translateX(100%)',
         }),
@@ -88,8 +88,8 @@ export function routerAnimation() {
           animate(
             '600ms ease',
             style({
-              position: 'fixed',
-              width: '58%',
+              position: 'absolute',
+              width: '100%',
               opacity: 0,
               transform: 'translateX(-100%)',
             }),

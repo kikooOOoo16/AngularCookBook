@@ -8,20 +8,20 @@
   <div #navbarMainListDiv class="main_list">
     <ul class="navLinks">
       <li class="nav-item " routerLinkActive="active">
-        <a class="nav-link" routerLink="/shopping-list">Shopping List
+        <a class="nav-link" (click)="toggleDropdown()" routerLink="/shopping-list">Shopping List
           <fa-icon class="nav-icons" [icon]="faShoppingBasket"></fa-icon>
         </a>
       </li>
       <li *ngIf="isAuthenticated" class="nav-item" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
-        <a class="nav-link" routerLink="/recipes">Recipes <span class="sr-only">(current)</span></a>
+        <a class="nav-link" (click)="toggleDropdown()" routerLink="/recipes">Recipes <span class="sr-only">(current)</span></a>
       </li>
       <li *ngIf="!isAuthenticated" class="nav-item " routerLinkActive="active">
-        <a class="nav-link" routerLink="/auth">Sign In
+        <a class="nav-link" (click)="toggleDropdown()" routerLink="/auth">Sign In
           <fa-icon class="nav-icons" [icon]="faSignIn"></fa-icon>
         </a>
       </li>
       <li *ngIf="isAuthenticated" class="nav-item " routerLinkActive="active">
-        <a class="nav-link" (click)="onLogout()">Sign Out
+        <a class="nav-link" (click)="onLogout(); toggleDropdown()">Sign Out
           <fa-icon class="nav-icons" [icon]="faSignOut"></fa-icon>
         </a>
       </li>

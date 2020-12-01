@@ -20,9 +20,6 @@
 </div>
 <div class="row mt-3 mb-3">
   <div class="d-flex flex-column align-items-center">
-<!--    <li class="list-group-item list-group-item-light" *ngFor="let ingredient of recipe.ingredients">-->
-<!--      {{ingredient.name}} - <span class="badge badge-primary badge-pill">{{ingredient.amount}}</span>-->
-<!--    </li>-->
     <a class="ingredient-list"
        *ngFor="let ingredient of recipe.ingredients;">
       {{ingredient.name}}
@@ -43,7 +40,7 @@
         </button>
       </div>
       <div class="dropdown-menu mb-4" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" (click)="onAddToShoppingList()" style="cursor: pointer">To Shopping List</a>
+        <a class="dropdown-item" (click)="onAddToShoppingList()">To Shopping List</a>
         <a class="dropdown-item" pageScroll href="#recipe-new" routerLink="./edit">Edit Recipe</a>
         <a class="dropdown-item" (click)="onDeleteRecipe()">Delete Recipe</a>
       </div>

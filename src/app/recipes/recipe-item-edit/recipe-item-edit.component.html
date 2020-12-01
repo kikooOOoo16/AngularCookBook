@@ -29,7 +29,7 @@
   <br>
   <h4>Recipe Ingredients</h4>
   <div class="row mb-3">
-    <div class="col-12" formArrayName="ingredients">
+    <div class="col-12 ingredients-list" formArrayName="ingredients">
       <div class="row" *ngFor="let ingredientControl of controls; let i = index" [formGroupName]="i">
         <div class="col-8 mb-2">
           <div class="input-field">

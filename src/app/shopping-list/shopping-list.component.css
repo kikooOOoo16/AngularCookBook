@@ -28,3 +28,41 @@ div.flex-column a.ingredient-list:hover {
 .check-icon:hover {
   background: #6bea55;
 }
+
+@media(max-width: 400px) {
+  .checked:after {
+    width: 72%;
+  }
+
+  div.flex-column a.ingredient-list {
+    font-size: 0.9rem;
+  }
+
+  .check-icon {
+    width: 40px;
+  }
+}
+
+@media(min-width: 401px) and (max-width: 550px) {
+  .checked:after {
+    width: 78%;
+  }
+}
+
+@media(min-width: 551px) and (max-width: 950px) {
+  .checked:after {
+    width: 84%;
+  }
+}
+
+@media(min-width: 1230px) and (max-width: 1600px) {
+  .checked:after {
+    width: 89%;
+  }
+}
+
+@media(min-width: 1601px) {
+  .checked:after {
+    width: 93%;
+  }
+}
