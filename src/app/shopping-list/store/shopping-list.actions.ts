@@ -26,6 +26,13 @@ export const updateIngredient = createAction(
   }>()
 );
 
+export const toggleCheckedIngredient = createAction(
+  '[Shopping List] Toggle Checked Ingredient',
+  props<{
+    checkedState: boolean
+  }>()
+)
+
 export const deleteIngredient = createAction(
   '[Shopping List] Delete Ingredient'
 );

@@ -3,13 +3,13 @@
     <app-shopping-edit></app-shopping-edit>
     <hr class="my-4">
     <div class="d-flex flex-column align-items-center">
-      <a #ingredientList class="ingredient-list"
+      <a #ingredientList class="ingredient-list" [ngClass]="ingredient.checked ? 'checked' : ''"
          *ngFor="let ingredient of (ingredients | async).ingredients; let i = index" (click)="onEditItem(i)">
         {{ingredient.name}}
         <div class="d-flex flex-row">
           <span class="ingredient-amount">{{ingredient.amount}}</span>
-          <fa-icon *ngIf="!ingredientList.classList.contains('checked')" (click)="onCheckIngredient($event, i, ingredientList)" [icon]="faSquare" class="check-icon" size="lg"></fa-icon>
-          <fa-icon *ngIf="ingredientList.classList.contains('checked')" (click)="onCheckIngredient($event, i, ingredientList)" [icon]="faCheckSquare" class="check-icon" size="lg"></fa-icon>
+          <fa-icon *ngIf="!ingredientList.classList.contains('checked')" (click)="onCheckIngredient($event, i)" [icon]="faSquare" class="check-icon" size="lg"></fa-icon>
+          <fa-icon *ngIf="ingredientList.classList.contains('checked')" (click)="onCheckIngredient($event, i)" [icon]="faCheckSquare" class="check-icon" size="lg"></fa-icon>
         </div>
       </a>
     </div>

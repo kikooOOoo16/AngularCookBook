@@ -56,6 +56,24 @@ export const _shoppingListReducer = createReducer(
     }
   ),
   on(
+    ShoppingListActions.toggleCheckedIngredient,
+    (state, action) => {
+      const oldIngredient = state.ingredients[state.editedIngredientIndex];
+      const updatedIngredient = {
+        ...oldIngredient,
+        checked: action.checkedState
+      };
+      let editedIngredients = [...state.ingredients];
+      editedIngredients[state.editedIngredientIndex] = updatedIngredient;
+      return ({
+        ...state,
+        ingredients: [...editedIngredients],
+        editedIngredientIndex: -1,
+        editedIngredient: null
+      })
+    }
+  ),
+  on(
     ShoppingListActions.deleteIngredient,
     (state, action) => ({
       ...state,
