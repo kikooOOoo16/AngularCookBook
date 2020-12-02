@@ -1,6 +1,6 @@
-import {Component, HostListener, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit, Renderer2} from '@angular/core';
 import {Ingredient} from '../recipes/models/ingredient.model';
-import {Observable, Subscription} from 'rxjs';
+import {Observable, Subject, Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import * as ShoppingListActions from './store/shopping-list.actions';
@@ -17,7 +17,7 @@ import {faCheckSquare, faSquare} from "@fortawesome/free-solid-svg-icons";
 export class ShoppingListComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
   private ingredientsSub: Subscription;
-  @ViewChildren('ingredientList') private ingredientsReferenceList: QueryList<any>
+  checkedIngredient : Subject<boolean> = new Subject<boolean>();
   ingredients: Observable<{ ingredients: Ingredient[] }>;
   isAuthenticated = false;
   @HostListener('window:beforeunload', ['$event']) pageLeave ($event: any) {
@@ -58,8 +58,6 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     }
   }
 
-
-
   onEditItem(i: number) {
     this.store.dispatch(ShoppingListActions.startEdit({index: i}));
   }
@@ -68,8 +66,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     this.router.navigate(['/recipes']);
   }
 
-  onCheckIngredient($event, i) {
-    $event.stopPropagation();
+  onCheckIngredient(i) {
     let checkedState: boolean = false;
     this.store.dispatch(ShoppingListActions.startEdit({index: i}));
     this.ingredientsSub = this.ingredients.subscribe((ingredientsState) => {
@@ -82,5 +79,6 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     this.ingredientsSub.unsubscribe();
     this.store.dispatch(ShoppingListActions.toggleCheckedIngredient({checkedState: checkedState}));
     checkedState = null;
+    this.checkedIngredient.next(true);
   }
 }

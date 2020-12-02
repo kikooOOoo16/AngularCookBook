@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Ingredient} from '../../recipes/models/ingredient.model';
 import {NgForm} from '@angular/forms';
-import {Subscription} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
 import * as ShoppingListActions from '../store/shopping-list.actions';
 import * as fromApp from '../../store/app.reducer';
@@ -12,6 +12,7 @@ import * as fromApp from '../../store/app.reducer';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
+  @Input('checkedIngredient') checkedIngredient : Subject<boolean>;
   @ViewChild('shoppingListForm', {static: true}) shoppingListForm: NgForm;
   shoppingListSubscription: Subscription;
   editMode = false;
@@ -34,6 +35,11 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         this.editMode = false;
       }
     });
+    this.checkedIngredient.subscribe((checkedIngredient) => {
+      if (checkedIngredient) {
+        this.shoppingListForm.reset();
+      }
+    })
   }
 
   ngOnDestroy(): void {

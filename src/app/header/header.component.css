@@ -167,13 +167,32 @@
   }
 }
 
+
+@media(max-width: 410px) {
+  .nav div.logo {
+    margin-left: 0;
+  }
+  .nav div.logo a {
+    font-size: 1.7rem;
+  }
+  .nav-icons {
+    font-size: 1.4rem;
+  }
+  .nav div.main_list ul li a {
+    font-size: 1.7rem;
+  }
+  div.main_list ~ span.navTrigger {
+    width: 20px;
+  }
+}
+
 /* Animation */
 
 .navTrigger {
   cursor: pointer;
   width: 30px;
   height: 25px;
-  margin: auto;
+  margin-top: 27px;
   position: absolute;
   right: 30px;
   top: 0;

@@ -35,7 +35,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <div class="button success {{ (!shoppingListForm.valid && !shoppingListForm.untouched) ? disabledClass : ''}}">
+          <div class="button success {{ ((!shoppingListForm.getControl(ingredientAmountInput).value || !shoppingListForm.getControl(ingredientNameInput).value) || !shoppingListForm.valid) ? disabledClass : ''}}">
             <div class="circle"></div>
             <button [disabled]="!shoppingListForm.valid" type="submit">
               {{ editMode ? 'Update' : 'Add Item'}}
@@ -47,9 +47,9 @@
               Delete
             </button>
           </div>
-          <div class="button info {{ (!shoppingListForm.touched) ? disabledClass : ''}}">
+          <div class="button info {{ (( !shoppingListForm.getControl(ingredientAmountInput).value && !shoppingListForm.getControl(ingredientNameInput).value)) ? disabledClass : '' }}">
             <div class="circle"></div>
-            <button [disabled]="!shoppingListForm.touched" type="button" (click)="resetForm()">
+            <button [disabled]="!shoppingListForm.getControl(ingredientAmountInput).value && !shoppingListForm.getControl(ingredientNameInput).value" type="button" (click)="resetForm()">
               Clear
             </button>
           </div>
