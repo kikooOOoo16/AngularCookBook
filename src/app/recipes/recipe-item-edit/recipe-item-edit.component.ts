@@ -47,6 +47,7 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
     let recipeName = '';
     let recipeImagePath = '';
     let recipeDescription = '';
+    let recipeCookTime = new Date;
     const recipeIngredients = new FormArray([]);
     if (this.editMode) {
       this.storeSub = this.store.select('recipes')
@@ -62,6 +63,7 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
       recipeName = this.recipe.name;
       recipeImagePath = this.recipe.imagePath;
       recipeDescription = this.recipe.description;
+      recipeCookTime = this.recipe.cookTime;
       if (this.recipe.ingredients) {
         for (const ingredient of this.recipe.ingredients) {
           recipeIngredients.push(
@@ -77,11 +79,13 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
       name: new FormControl(recipeName, Validators.required),
       imagePath: new FormControl(recipeImagePath, Validators.required),
       description: new FormControl(recipeDescription, Validators.required),
+      cookTime: new FormControl(recipeCookTime, Validators.required),
       ingredients: recipeIngredients
     });
   }
 
   submitForm() {
+    console.log(this.recipeForm.value);
     if (this.editMode) {
       this.store.dispatch(RecipesActions.updateRecipe({newRecipe: this.recipeForm.value, index: this.recipeId}));
     } else {

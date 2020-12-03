@@ -9,6 +9,15 @@
           formControlName="name">
         <label for="recipeName">Recipe Name</label>
       </div>
+      <div class="input-field cook-time">
+        <input
+          type="time"
+          id="cookTime"
+          required
+          formControlName="cookTime"
+          min="00:01" max="22:00">
+        <label for="cookTime">Cook time</label>
+      </div>
       <div class="input-field">
         <input
           type="text"

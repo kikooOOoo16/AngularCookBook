@@ -4,7 +4,7 @@
     margin-left: 0;
   }
   .new-recipe-button {
-    left: 49px;
+    margin-left: 62px;
   }
 }
 
@@ -14,7 +14,7 @@
     margin-left: 26%;
   }
   .new-recipe-button {
-    left: 33%;
+    margin-left: 36%;
   }
 }
 
@@ -24,7 +24,7 @@
     margin-left: 28%;
   }
   .new-recipe-button {
-    left: 34%;
+    margin-left: 39%;
   }
 }
 
@@ -34,7 +34,7 @@
     margin-left: 20%;
   }
   .new-recipe-button {
-    left: 28%;
+    margin-left: 32%;
   }
 }
 
@@ -45,7 +45,7 @@
     margin-left: 0;
   }
   .new-recipe-button {
-    left: 49px;
+    margin-left: 66px;
   }
 }
 
@@ -55,13 +55,13 @@
     margin-left: 8%;
   }
   .new-recipe-button {
-    left: 28%;
+    margin-left: 30%;
   }
 }
 
 @media (min-width: 1400px) and (max-width: 1675px) {
   .new-recipe-button {
-    left: 24%;
+    margin-left: 27%;
   }
 }
 
@@ -71,7 +71,7 @@
     margin-left: 34%;
   }
   .new-recipe-button {
-    left: 39%;
+    margin-left: 39%;
   }
 }
 
@@ -81,8 +81,6 @@
     margin-left: 29%;
   }
   .new-recipe-button {
-    left: 33%;
+    margin-left: 35%;
   }
 }
-
-

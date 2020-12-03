@@ -2,7 +2,7 @@
   <div class="col-sm-12 col-lg-10 shoppingList-content">
     <app-shopping-edit [checkedIngredient]="checkedIngredient"></app-shopping-edit>
     <hr class="my-4">
-    <div class="d-flex flex-column align-items-center">
+    <div pageScroll [pageScrollDuration]="500" href="#ingredient-edit" class="d-flex flex-column align-items-center">
       <a #ingredientList class="ingredient-list" [ngClass]="ingredient.checked ? 'checked' : ''"
          *ngFor="let ingredient of (ingredients | async).ingredients; let i = index" (click)="onEditItem(i)">
         {{ingredient.name}}
