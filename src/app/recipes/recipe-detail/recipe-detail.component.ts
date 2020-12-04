@@ -9,6 +9,7 @@ import * as ShoppingListActions from '../../shopping-list/store/shopping-list.ac
 import {AlertComponent} from "../../shared/alert/alert.component";
 import {PlaceholderDirective} from "../../shared/placeholder/placeholder.directive";
 import {Subscription} from "rxjs";
+import {faClock} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-recipe-detail',
@@ -17,6 +18,7 @@ import {Subscription} from "rxjs";
 })
 export class RecipeDetailComponent implements OnInit {
   @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
+  faClock = faClock;
   private closeSub: Subscription;
   recipe: Recipe;
   id: number;

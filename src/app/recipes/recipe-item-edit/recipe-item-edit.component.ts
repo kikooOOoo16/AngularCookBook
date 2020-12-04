@@ -79,7 +79,7 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
       name: new FormControl(recipeName, Validators.required),
       imagePath: new FormControl(recipeImagePath, Validators.required),
       description: new FormControl(recipeDescription, Validators.required),
-      cookTime: new FormControl(recipeCookTime, Validators.required),
+      cookTime: new FormControl(recipeCookTime, Validators.pattern(/^(0[0-9]|1[0-9]|2[0-3]):[0-9][0-9]$/)),
       ingredients: recipeIngredients
     });
   }
@@ -89,7 +89,7 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
     if (this.editMode) {
       this.store.dispatch(RecipesActions.updateRecipe({newRecipe: this.recipeForm.value, index: this.recipeId}));
     } else {
-      this.store.dispatch(RecipesActions.addRecipe(this.recipeForm.value));
+      this.store.dispatch(RecipesActions.addRecipe({recipe: this.recipeForm.value}));
     }
     this.onCancel();
   }
