@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Recipe} from '../models/recipe.model';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -19,6 +19,7 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
   editMode = false;
   recipe: Recipe;
   recipeForm: FormGroup;
+  ingredientUnits = ['kg', 'g', 'l', 'ml', 'tsp', 'cup', ''];
   private storeSub: Subscription;
   faTimes = faTimes;
   disabledClass = 'disabled'
@@ -69,7 +70,8 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
           recipeIngredients.push(
             new FormGroup({
               name: new FormControl(ingredient.name, Validators.required),
-              amount: new FormControl(ingredient.amount, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]),
+              amount: new FormControl(ingredient.amount, [Validators.required, Validators.pattern(/^[0-9]{1,4}(\.[0-9]{1,3})?$/)]),
+              ingredientUnits: new FormControl(this.ingredientUnits[6])
             })
           );
         }
@@ -98,7 +100,8 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
     (this.recipeForm.get('ingredients') as FormArray).push(
       new FormGroup({
         name: new FormControl(null, Validators.required),
-        amount: new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
+        amount: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]{1,4}(\.[0-9]{1,3})?$/)]),
+        ingredientUnits: new FormControl(this.ingredientUnits[6])
       })
     );
   }
@@ -113,5 +116,9 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
 
   get controls() { // a getter!
     return (this.recipeForm.get('ingredients') as FormArray).controls;
+  }
+
+  onAddIngredientUnit($event: Event, ingredientUnitsControl: HTMLSelectElement) {
+    console.log('Unit selected : ' + ingredientUnitsControl.value);
   }
 }
