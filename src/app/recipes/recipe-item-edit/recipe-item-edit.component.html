@@ -40,7 +40,7 @@
   <div class="row mb-3">
     <div class="col-12 ingredients-list" formArrayName="ingredients">
       <div class="row" *ngFor="let ingredientControl of controls; let i = index" [formGroupName]="i">
-        <div class="col-6 col-sm-7 col-md-7 mb-2">
+        <div class="col-5 col-sm-6 col-md-6 mb-2">
           <div class="input-field">
             <input type="text" formControlName="name">
           </div>
@@ -50,15 +50,15 @@
             <input class="text-center" type="text" formControlName="amount">
           </div>
         </div>
-        <div class="col">
-          <select class="custom-select" (change)="onAddIngredientUnit($event, ingredientUnitsControl)" #ingredientUnitsControl formControlName="ingredientUnits">
-            <option value="" disabled>Unit</option>
+        <div class="col-2">
+          <select class="ingredient-unit-select" formControlName="unit">
+            <option disabled >Unit</option>
             <option *ngFor="let unit of ingredientUnits" [ngValue]="unit">{{unit}}</option>
           </select>
         </div>
         <div class="col-1">
-            <button class="delete-ingredient-btn mt-4" type="button" (click)="onDeleteIngredient(i)"><fa-icon [icon]="faTimes"></fa-icon>
-            </button>
+          <button class="delete-ingredient-btn mt-4" type="button" (click)="onDeleteIngredient(i)"><fa-icon [icon]="faTimes"></fa-icon>
+          </button>
         </div>
       </div>
       <hr>

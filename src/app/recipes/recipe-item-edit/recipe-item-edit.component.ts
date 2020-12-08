@@ -19,7 +19,7 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
   editMode = false;
   recipe: Recipe;
   recipeForm: FormGroup;
-  ingredientUnits = ['kg', 'g', 'l', 'ml', 'tsp', 'cup', ''];
+  ingredientUnits = ['' ,'kg', 'g', 'l', 'ml', 'tbsp', 'cup'];
   private storeSub: Subscription;
   faTimes = faTimes;
   disabledClass = 'disabled'
@@ -71,7 +71,7 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
             new FormGroup({
               name: new FormControl(ingredient.name, Validators.required),
               amount: new FormControl(ingredient.amount, [Validators.required, Validators.pattern(/^[0-9]{1,4}(\.[0-9]{1,3})?$/)]),
-              ingredientUnits: new FormControl(this.ingredientUnits[6])
+              unit: new FormControl(ingredient.unit)
             })
           );
         }
@@ -87,7 +87,6 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
   }
 
   submitForm() {
-    console.log(this.recipeForm.value);
     if (this.editMode) {
       this.store.dispatch(RecipesActions.updateRecipe({newRecipe: this.recipeForm.value, index: this.recipeId}));
     } else {
@@ -101,7 +100,7 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
       new FormGroup({
         name: new FormControl(null, Validators.required),
         amount: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]{1,4}(\.[0-9]{1,3})?$/)]),
-        ingredientUnits: new FormControl(this.ingredientUnits[6])
+        unit: new FormControl(this.ingredientUnits[0])
       })
     );
   }
@@ -116,9 +115,5 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
 
   get controls() { // a getter!
     return (this.recipeForm.get('ingredients') as FormArray).controls;
-  }
-
-  onAddIngredientUnit($event: Event, ingredientUnitsControl: HTMLSelectElement) {
-    console.log('Unit selected : ' + ingredientUnitsControl.value);
   }
 }

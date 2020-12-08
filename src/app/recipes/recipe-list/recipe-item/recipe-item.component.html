@@ -4,6 +4,7 @@
     <div class="card-body">
       <h5 class="card-title">{{recipeItem.name}}</h5>
       <p class="card-text">{{recipeItem.description}}</p>
+      <p class="mx-1"><strong>Cook time</strong>: {{recipeItem.cookTime + ' '}}<fa-icon [icon]=faClock></fa-icon></p>
       <div class="button info">
         <div class="circle"></div>
         <button type="button" pageScroll href="#recipe-details" [routerLink]="[index]">Open recipe</button>

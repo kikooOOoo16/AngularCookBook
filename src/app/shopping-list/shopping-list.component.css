@@ -22,6 +22,7 @@ div.flex-column a.ingredient-list:hover {
 .check-icon {
   color: #ffffff;
   width: 50px;
+  text-align: center;
   background: #57B846;
   transition: background-color 0.3s;
 }

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from '../../models/recipe.model';
+import {faClock} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-recipe-item',
@@ -9,6 +10,7 @@ import {Recipe} from '../../models/recipe.model';
 export class RecipeItemComponent implements OnInit {
   @Input() recipeItem: Recipe;
   @Input() index: number;
+  faClock = faClock;
 
   ngOnInit() {
   }

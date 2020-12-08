@@ -21,11 +21,11 @@
         <div class="div col-10 col-lg-4 col-xl-5 mt-sm-3 mt-lg-0 form-group">
           <div class="input-field">
             <input
-              type="number"
+              type="text"
               id="amount"
               name="amountInput"
               required
-              pattern="^[1-9]+[0-9]*$"
+              pattern="^[0-9]{1,4}(\.[0-9]{1,3})?$"
               ngModel #ingredientAmountInput="ngModel">
             <label for="amount">Amount</label>
             <p class="text-suggestion" *ngIf="!ingredientAmountInput.valid && ingredientAmountInput.touched">Enter an

@@ -21,7 +21,7 @@
 </div>
 <div class="row">
   <div class="col-12">
-    <p class="lead">Cook time: {{recipe.cookTime}} <fa-icon [icon]=faClock></fa-icon></p>
+    <p class="lead"><strong>Cook time</strong>: {{recipe.cookTime}} <fa-icon [icon]=faClock></fa-icon></p>
   </div>
 </div>
 <div class="row mt-3 mb-3">
@@ -30,7 +30,7 @@
        *ngFor="let ingredient of recipe.ingredients;">
       {{ingredient.name}}
       <div class="d-flex flex-row">
-        <span class="ingredient-amount">{{ingredient.amount}}</span>
+        <span class="ingredient-amount">{{ingredient.amount + ((ingredient.unit === ('' || 'Unit')) ? '' : ' '+ingredient.unit)}}</span>
       </div>
     </a>
   </div>
