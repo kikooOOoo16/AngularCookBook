@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from '../../models/recipe.model';
-import {faClock} from "@fortawesome/free-solid-svg-icons";
+import {faClock, faHourglassHalf} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-recipe-item',
@@ -10,6 +10,7 @@ import {faClock} from "@fortawesome/free-solid-svg-icons";
 export class RecipeItemComponent implements OnInit {
   @Input() recipeItem: Recipe;
   @Input() index: number;
+  faHourGlass = faHourglassHalf;
   faClock = faClock;
 
   ngOnInit() {

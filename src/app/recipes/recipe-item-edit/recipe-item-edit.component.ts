@@ -1,6 +1,6 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {Recipe} from '../models/recipe.model';
+import {Recipe, recipeDifficulty} from '../models/recipe.model';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {map} from 'rxjs/operators';
 import {Store} from '@ngrx/store';
@@ -19,10 +19,11 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
   editMode = false;
   recipe: Recipe;
   recipeForm: FormGroup;
+  recipeDifficulty : recipeDifficulty = recipeDifficulty.Low;
   ingredientUnits = ['' ,'kg', 'g', 'l', 'ml', 'tbsp', 'cup'];
   private storeSub: Subscription;
   faTimes = faTimes;
-  disabledClass = 'disabled'
+  disabledClass = 'disabled';
 
   constructor(
     private route: ActivatedRoute,
@@ -49,6 +50,7 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
     let recipeImagePath = '';
     let recipeDescription = '';
     let recipeCookTime = new Date;
+    let recipePrepTime = new Date;
     const recipeIngredients = new FormArray([]);
     if (this.editMode) {
       this.storeSub = this.store.select('recipes')
@@ -64,7 +66,9 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
       recipeName = this.recipe.name;
       recipeImagePath = this.recipe.imagePath;
       recipeDescription = this.recipe.description;
+      recipePrepTime = this.recipe.prepTime;
       recipeCookTime = this.recipe.cookTime;
+      this.recipeDifficulty = this.recipe.recipeDifficulty;
       if (this.recipe.ingredients) {
         for (const ingredient of this.recipe.ingredients) {
           recipeIngredients.push(
@@ -81,12 +85,15 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
       name: new FormControl(recipeName, Validators.required),
       imagePath: new FormControl(recipeImagePath, Validators.required),
       description: new FormControl(recipeDescription, Validators.required),
+      prepTime: new FormControl(recipePrepTime, Validators.pattern(/^(0[0-9]|1[0-9]|2[0-3]):[0-9][0-9]$/)),
       cookTime: new FormControl(recipeCookTime, Validators.pattern(/^(0[0-9]|1[0-9]|2[0-3]):[0-9][0-9]$/)),
+      recipeDifficulty: new FormControl(this.recipeDifficulty, Validators.required),
       ingredients: recipeIngredients
     });
   }
 
   submitForm() {
+    console.log(this.recipeForm.value)
     if (this.editMode) {
       this.store.dispatch(RecipesActions.updateRecipe({newRecipe: this.recipeForm.value, index: this.recipeId}));
     } else {
@@ -115,5 +122,10 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
 
   get controls() { // a getter!
     return (this.recipeForm.get('ingredients') as FormArray).controls;
+  }
+
+  recipeDifficulties() : Array<String> {
+      let recipeDifficulties = Object.keys(recipeDifficulty);
+      return recipeDifficulties.slice(recipeDifficulties.length / 2 - 1);
   }
 }

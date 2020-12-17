@@ -9,6 +9,15 @@
           formControlName="name">
         <label for="recipeName">Recipe Name</label>
       </div>
+      <div class="input-field prep-time">
+        <input
+          type="time"
+          id="prepTime"
+          required
+          formControlName="prepTime"
+          min="00:01" max="22:00">
+        <label for="prepTime">Prep time</label>
+      </div>
       <div class="input-field cook-time">
         <input
           type="time"
@@ -17,6 +26,16 @@
           formControlName="cookTime"
           min="00:01" max="22:00">
         <label for="cookTime">Cook time</label>
+      </div>
+      <div class="input-field">
+        <label id="recipeDifficultyLabel" for="recipeDifficulty">Difficulty</label>
+        <select
+          id="recipeDifficulty"
+          class="recipe-difficulty-select"
+          formControlName="recipeDifficulty"
+          required>
+          <option *ngFor="let recipeDifficulty of recipeDifficulties()" [ngValue]="recipeDifficulty">{{recipeDifficulty}}</option>
+        </select>
       </div>
       <div class="input-field">
         <input
