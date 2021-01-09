@@ -5,6 +5,10 @@ export const getRecipesFromDb = createAction(
   '[Recipes] Get Recipes From Db',
 );
 
+export const noRecipesInDb = createAction(
+  '[Recipes] No Recipes In Db'
+)
+
 export const saveRecipesToDb = createAction(
   '[Recipes] Save Recipes To Db'
 );

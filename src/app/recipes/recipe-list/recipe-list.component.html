@@ -7,9 +7,12 @@
   </div>
 </div>
 <hr id="recipe-list-hr">
-<div class="row mb-3 justify-content-sm-center justify-content-md-start">
-  <app-recipe-item *ngFor="let recipeItem of recipes; let i = index"
-                   [recipeItem]="recipeItem"
-                   [index]="i">
-  </app-recipe-item>
-</div>
+<h4 class="justify-content-center" *ngIf="recipes.length < 1; else showRecipes">You have no recipes.</h4>
+<ng-template #showRecipes>
+  <div class="row mb-3 justify-content-sm-center justify-content-md-start">
+    <app-recipe-item *ngFor="let recipeItem of recipes; let i = index"
+                     [recipeItem]="recipeItem"
+                     [index]="i">
+    </app-recipe-item>
+  </div>
+</ng-template>

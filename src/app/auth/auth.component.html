@@ -8,7 +8,8 @@
       <div class="login-header-background"></div>
       <div class="login-header-overlay"></div>
       <div class="login-header-content">
-        <p class="centered">SIGN IN</p>
+        <p *ngIf="isLoginMode" class="centered">SIGN IN</p>
+        <p *ngIf="!isLoginMode" class="centered">SIGN UP</p>
       </div>
       <div class="login-form-content">
         <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">

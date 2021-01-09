@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "cook-book"
+    }
+  },
+  "defaultProject": "cook-book",
+  "cli": {
+    "analytics": false
+  }
 }

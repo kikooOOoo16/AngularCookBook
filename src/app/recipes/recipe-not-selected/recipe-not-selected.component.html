@@ -1,1 +1,2 @@
-<h4><span class="no-selection">Select or create a new recipe</span></h4>
+<h4 *ngIf="recipes.length > 0" ><span class="no-selection">Select or create a new recipe</span></h4>
+<h4 *ngIf="recipes.length < 1" ><span class="no-selection">To add a new recipe use the NEW RECIPE button.</span></h4>
