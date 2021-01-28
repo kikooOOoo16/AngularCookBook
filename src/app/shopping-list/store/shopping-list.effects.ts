@@ -18,10 +18,10 @@ export class ShoppingListEffects {
       ofType(ShoppingListActions.saveIngredients),
       withLatestFrom(this.store.select('shoppingList')),
       map(([actionData, shoppingListState]) => {
-            if (typeof shoppingListState.ingredients !== 'undefined') {
-              localStorage.setItem('shoppingList', JSON.stringify(shoppingListState.ingredients));
-            }
-            return shoppingListState;
+        if (typeof shoppingListState.ingredients !== 'undefined') {
+          localStorage.setItem('shoppingList', JSON.stringify(shoppingListState.ingredients));
+        }
+        return shoppingListState;
       })
     ), { dispatch: false }
   )

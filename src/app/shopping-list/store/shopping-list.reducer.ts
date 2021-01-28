@@ -105,6 +105,25 @@ export function shoppingListReducer(state: State = initialState, action: Action)
   return _shoppingListReducer(state, action)
 }
 
+function convertIngredientsUnit(oldIngredient: Ingredient, newIngredient: Ingredient) {
+  if ((oldIngredient.unit === 'kg' || oldIngredient.unit === 'l') && (newIngredient.unit === 'g' || newIngredient.unit ==='ml')) {
+    oldIngredient.amount = oldIngredient.amount * 1000;
+    if (oldIngredient.unit === 'kg') {
+      oldIngredient.unit = 'g';
+    } else {
+      oldIngredient.unit = 'ml';
+    }
+  }
+  else if ((oldIngredient.unit === 'g' || oldIngredient.unit === 'ml') && (newIngredient.unit === 'kg' || newIngredient.unit === 'l')) {
+    newIngredient.amount = newIngredient.amount * 1000;
+    if (newIngredient.unit === 'kg') {
+      newIngredient.unit = 'g';
+    } else {
+      newIngredient.unit = 'ml';
+    }
+  }
+}
+
 function sumAmountIfExists(
   newIngredient: Ingredient = null,
   newIngredients: Ingredient[] = null,
@@ -123,7 +142,8 @@ function sumAmountIfExists(
     });
     if (existing.length) {
       const existingIndex = result.indexOf(existing[0]);
-      result[existingIndex].amount += ingredient.amount;
+      convertIngredientsUnit(ingredient, result[existingIndex]);
+      result[existingIndex].amount = Number(result[existingIndex].amount) + Number(ingredient.amount);
     } else {
       result.push(ingredient);
     }

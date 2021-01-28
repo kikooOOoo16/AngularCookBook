@@ -50,7 +50,7 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onAddToShoppingList() {
-    this.store.dispatch(ShoppingListActions.addIngredients({ingredients: this.recipe.ingredients}));
+    this.store.dispatch(ShoppingListActions.addIngredients({ingredients: [...this.recipe.ingredients]}));
     this.showErrorAlert('Sent to shopping list.')
   }
 

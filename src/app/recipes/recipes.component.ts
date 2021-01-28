@@ -1,8 +1,10 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import * as fromApp from '../store/app.reducer';
 import {Store} from '@ngrx/store';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {faAngleUp} from '@fortawesome/free-solid-svg-icons/faAngleUp';
+import * as ShoppingListActions from "../shopping-list/store/shopping-list.actions";
+import {Ingredient} from "./models/ingredient.model";
 
 
 @Component({
@@ -16,6 +18,13 @@ export class RecipesComponent implements OnInit, OnDestroy {
   dataBaseCall = false;
   recipesSub: Subscription;
   faAngleUp = faAngleUp;
+  private ingredients: Observable<{ ingredients: Ingredient[] }>;
+  // save shopping list state on page leave
+  @HostListener('window:beforeunload', ['$event']) pageLeave ($event: any) {
+    if (this.ingredients) {
+      this.store.dispatch(ShoppingListActions.saveIngredients());
+    }
+  }
 
   constructor(private store: Store<fromApp.AppState>) {
   }
@@ -25,6 +34,7 @@ export class RecipesComponent implements OnInit, OnDestroy {
       .subscribe(recipesState => {
         this.dataBaseCall = recipesState.dBCall;
       });
+    this.ingredients = this.store.select('shoppingList');
   }
 
   ngOnDestroy(): void {
