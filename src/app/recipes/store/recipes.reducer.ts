@@ -66,6 +66,12 @@ const _recipesReducer = createReducer(
         return recipeId !== action.index
       })
     })
+  ),
+  on(
+    RecipesActions.resetRecipes,
+    (state, action) => ({
+      ...initialState
+    })
   )
 );
 

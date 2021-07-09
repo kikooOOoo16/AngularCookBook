@@ -52,3 +52,7 @@ export const deleteRecipe = createAction(
     index: number
   }>()
 );
+
+export const resetRecipes = createAction(
+  '[Recipes] Reset Recipes'
+)

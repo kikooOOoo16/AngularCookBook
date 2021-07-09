@@ -17,6 +17,10 @@
   object-fit: cover;
 }
 
+#add-ingredients-btn {
+  width: 260px;
+}
+
 .delete-ingredient-btn {
   width: 35px;
   height: 35px;
@@ -42,10 +46,6 @@
     padding-left: 0;
     padding-right: 0;
   }
-}
-
-@media(max-width: 360px) {
-
 }
 
 /* Input fields */

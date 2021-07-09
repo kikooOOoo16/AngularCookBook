@@ -21,16 +21,16 @@ import { StopPropagationDirective } from './stop-propagation.directive';
     CommonModule,
     FontAwesomeModule
   ],
-    exports: [
-        CommonModule,
-        FontAwesomeModule,
-        LoadingSpinnerComponent,
-        AlertComponent,
-        PlaceholderDirective,
-        DropdownDirective,
-        TrackScrollDirective,
-        StopPropagationDirective
-    ],
+  exports: [
+    CommonModule,
+    FontAwesomeModule,
+    LoadingSpinnerComponent,
+    AlertComponent,
+    PlaceholderDirective,
+    DropdownDirective,
+    TrackScrollDirective,
+    StopPropagationDirective
+  ],
   entryComponents: [
     AlertComponent
   ]

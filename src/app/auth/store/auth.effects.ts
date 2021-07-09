@@ -8,6 +8,7 @@ import {User} from '../user';
 import {AuthService} from '../auth.service';
 import {environment} from '../../../environments/environment';
 import * as AuthActions from './auth.actions';
+import * as RecipeActions from '../../recipes/store/recipes.actions';
 
 export interface AuthResponseData {
   idToken: string;
@@ -143,8 +144,11 @@ export class AuthEffects {
         this.authService.clearLogoutTimer();
         localStorage.removeItem('userData');
         this.router.navigate(['/auth']);
+      }),
+      map( () => {
+        return RecipeActions.resetRecipes()
       })
-    ), {dispatch: false}
+    )
   );
 }
 

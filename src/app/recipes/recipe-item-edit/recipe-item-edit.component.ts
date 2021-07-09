@@ -124,7 +124,7 @@ export class RecipeItemEditComponent implements OnInit, OnDestroy {
   }
 
   recipeDifficulties() : Array<String> {
-      let recipeDifficulties = Object.keys(recipeDifficulty);
-      return recipeDifficulties.slice(recipeDifficulties.length / 2 - 1);
+    let recipeDifficulties = Object.keys(recipeDifficulty);
+    return recipeDifficulties.slice(recipeDifficulties.length / 2 - 1);
   }
 }
